@@ -55,6 +55,7 @@ export default function LiveTVPage() {
 
   return (
     <>
+    
       {activeChannel && (
         <div className="bg-slate-950 pt-16 min-h-screen flex flex-col">
           <div className="bg-slate-900 border-b border-slate-800 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
