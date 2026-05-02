@@ -5,9 +5,9 @@ import { Mail, Phone, MapPin, Clock, Send, CircleCheck as CheckCircle, Radio } f
 import { createClient } from '@/lib/supabase';
 
 const contactInfo = [
-  { icon: MapPin, label: 'Our Address', value: '123 Broadcast Avenue, Media City, CA 90001', subvalue: 'United States' },
-  { icon: Phone, label: 'Phone Number', value: '+1 (800) 555-STREAM', subvalue: 'Mon-Fri, 9AM - 8PM EST' },
-  { icon: Mail, label: 'Email Address', value: 'info@streamtv.com', subvalue: 'We reply within 24 hours' },
+  { icon: MapPin, label: 'Our Address', value: '1 Panchvati apartment near Gupta nursing home new colony palwal 121102' },
+  { icon: Phone, label: 'Phone Number', value: ' 9813399396', subvalue: 'Mon-Fri, 9AM - 8PM EST' },
+  { icon: Mail, label: 'Email Address', value: 'info@omdiamond24.com', subvalue: 'We reply within 24 hours' },
   { icon: Clock, label: 'Working Hours', value: '24/7 Live Support', subvalue: 'Technical help always available' },
 ];
 
@@ -71,17 +71,17 @@ export default function ContactPage() {
               </div>
             ))}
 
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+            {/* <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
               <img
                 src="https://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeg?auto=compress&cs=tinysrgb&w=600"
                 alt="Office Location"
                 className="w-full h-44 object-cover opacity-60"
               />
               <div className="p-4">
-                <div className="text-white font-medium text-sm">StreamTV Headquarters</div>
-                <div className="text-slate-500 text-xs mt-0.5">Media City, Los Angeles, CA</div>
+                <div className="text-white font-medium text-sm">OM Diamond 24 Headquarters</div>
+                <div className="text-slate-500 text-xs mt-0.5">1 Panchvati apartment near Gupta nursing home new colony palwal 121102</div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="lg:col-span-3">

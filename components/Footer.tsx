@@ -12,7 +12,7 @@ export default function Footer() {
                 <Tv className="w-5 h-5 text-white" />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-white font-bold text-lg">StreamTV</span>
+                <span className="text-white font-bold text-lg">OM Diamond 24</span>
                 <span className="text-red-400 text-[10px] font-semibold tracking-widest uppercase">Live Broadcasting</span>
               </div>
             </Link>
@@ -82,15 +82,15 @@ export default function Footer() {
             <ul className="space-y-3.5">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
-                <span className="text-slate-400 text-sm">123 Broadcast Ave, Media City, CA 90001</span>
+                <span className="text-slate-400 text-sm">1 Panchvati apartment near Gupta nursing home new colony palwal 121102</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-red-400 shrink-0" />
-                <span className="text-slate-400 text-sm">+1 (800) 555-STREAM</span>
+                <span className="text-slate-400 text-sm">9813399396</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-red-400 shrink-0" />
-                <span className="text-slate-400 text-sm">info@streamtv.com</span>
+                <span className="text-slate-400 text-sm">info@omdiamond24.com</span>
               </li>
               <li className="flex items-center gap-3">
                 <Radio className="w-4 h-4 text-red-400 shrink-0" />

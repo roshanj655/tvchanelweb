@@ -36,11 +36,12 @@ export default function Navbar() {
             <div className="relative">
               <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-500 transition-colors">
                 <Tv className="w-5 h-5 text-white" />
+                {/* <img src="https://www.codeminer.in/tvchanel/admin/upload/logo_687c8dd0799be0.74222103.png" className="w-5 h-5 text-white" /> */}
               </div>
               <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-red-400 rounded-full animate-pulse" />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-white font-bold text-lg tracking-tight">StreamTV</span>
+              <span className="text-white font-bold text-lg tracking-tight">OM Diamond TV</span>
               <span className="text-red-400 text-[10px] font-semibold tracking-widest uppercase">Live Broadcasting</span>
             </div>
           </Link>

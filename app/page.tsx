@@ -1,13 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { Radio, Play, TrendingUp, Users, Tv, Award, ChevronRight, Signal, Globe, Shield } from 'lucide-react';
-import { channels } from '@/lib/channels-data';
+import { Radio, Play, TrendingUp, Users, Tv, Award, ChevronRight, Signal, Globe, Shield, Phone, Smartphone } from 'lucide-react';
+import channelsData from '@/lib/channels-data';
+import { useEffect, useState } from 'react';
+import { Channel } from '@/lib/interface';
+import HLSPlayer from '@/components/ui/HLSPlayer';
 
 const stats = [
   { label: 'Live Channels', value: '200+', icon: Tv },
-  { label: 'Daily Viewers', value: '50M+', icon: Users },
-  { label: 'Countries', value: '120+', icon: Globe },
+  { label: 'Daily Viewers', value: '1M+', icon: Users },
+  { label: 'Countries', value: '1+', icon: Globe },
   { label: 'HD Channels', value: '98%', icon: Signal },
 ];
 
@@ -44,8 +47,23 @@ const tickerItems = [
 ];
 
 export default function Home() {
-  const featuredChannels = channels.filter((c) => c.isLive).slice(0, 6);
-
+   const [channels, setChannels] = useState<Channel[]>([]);
+   useEffect(() => {
+         fetchChannels();
+       }, []);
+       const fetchChannels = async () => {
+           try {
+               const data = await channelsData.fetchChannels();
+               setChannels(data);
+               stats[0].value = `${data.length}+`;
+               console.log(data);
+           } catch (error) {
+             console.error('Failed to load channels:', error);
+           } finally {
+           //   setLoading(false);
+           }
+         };
+  const featuredChannels = channels.slice(0, 6);
   return (
     <div className="bg-slate-950">
       {/* News Ticker */}
@@ -129,25 +147,13 @@ export default function Home() {
             <div className="relative">
               <div className="relative bg-slate-800/60 border border-slate-700/50 rounded-2xl overflow-hidden shadow-2xl">
                 <div className="relative bg-slate-900 aspect-video flex items-center justify-center overflow-hidden">
-                  <img
+                  {/* <img
                     src="https://images.pexels.com/photos/1227996/pexels-photo-1227996.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Live TV Preview"
                     className="w-full h-full object-cover opacity-70"
-                  />
+                  /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-                  <div className="absolute top-4 left-4 flex items-center gap-2 bg-red-600/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <div className="live-dot w-2 h-2 bg-white rounded-full" />
-                    <span className="text-white text-xs font-bold uppercase">Live</span>
-                  </div>
-                  <button className="absolute inset-0 flex items-center justify-center group">
-                    <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/30">
-                      <Play className="w-7 h-7 text-white fill-white ml-1" />
-                    </div>
-                  </button>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="text-white font-semibold text-sm">SportZone Live — Premier League</div>
-                    <div className="text-slate-300 text-xs mt-0.5">3.4M watching now</div>
-                  </div>
+                  <HLSPlayer src={featuredChannels[3]?.link} />
                 </div>
 
                 <div className="p-4 grid grid-cols-4 gap-2">
@@ -155,13 +161,13 @@ export default function Home() {
                     <div
                       key={ch.id}
                       className="rounded-lg p-2.5 flex flex-col items-center gap-1 cursor-pointer hover:bg-slate-700/50 transition-colors"
-                      style={{ backgroundColor: `${ch.color}15` }}
+                      style={{ backgroundColor: `#00000015` }}
                     >
                       <div
                         className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold"
-                        style={{ backgroundColor: ch.color }}
+                        
                       >
-                        {ch.name.slice(0, 2)}
+                        <img src={'https://www.codeminer.in/tvchanel/admin/upload/' +ch.logo} />
                       </div>
                       <span className="text-slate-400 text-[10px] truncate w-full text-center">{ch.name}</span>
                     </div>
@@ -224,19 +230,19 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredChannels.map((ch) => (
-            <Link key={ch.id} href="/live-tv">
+            <Link key={ch.id} href={`/live-tv?id=${ch.id}`}>
               <div className="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-600 transition-all duration-300 hover:shadow-xl hover:shadow-black/40 hover:-translate-y-1 cursor-pointer">
                 <div className="relative aspect-video bg-slate-800 overflow-hidden">
                   <div
                     className="absolute inset-0 opacity-30"
-                    style={{ backgroundColor: ch.color }}
+                    
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div
                       className="w-16 h-16 rounded-2xl flex items-center justify-center text-white text-xl font-black shadow-2xl"
-                      style={{ backgroundColor: ch.color }}
+                      
                     >
-                      {ch.name.slice(0, 2)}
+                      <img src={'https://www.codeminer.in/tvchanel/admin/upload/' +ch.logo} />
                     </div>
                   </div>
                   <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-red-600/90 backdrop-blur-sm rounded-full px-2.5 py-1">
@@ -244,7 +250,7 @@ export default function Home() {
                     <span className="text-white text-[10px] font-bold uppercase">Live</span>
                   </div>
                   <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-full px-2.5 py-1">
-                    <span className="text-white text-[10px] font-medium">{ch.viewers}</span>
+                    {/* <span className="text-white text-[10px] font-medium">{ch.viewers}</span> */}
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
@@ -256,11 +262,10 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-white font-semibold">{ch.name}</div>
-                      <div className="text-slate-500 text-sm mt-0.5">{ch.currentShow}</div>
+                      <div className="text-slate-500 text-sm mt-0.5">{ch.code}</div>
                     </div>
                     <span
                       className="text-xs font-medium px-2.5 py-1 rounded-full"
-                      style={{ backgroundColor: `${ch.color}20`, color: ch.color }}
                     >
                       {ch.category}
                     </span>
@@ -276,7 +281,7 @@ export default function Home() {
       <section className="py-20 bg-slate-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Why Choose StreamTV?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Why Choose OM Diamond 24?</h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
               We deliver the best live television experience with cutting-edge technology and an unmatched channel lineup.
             </p>
@@ -314,8 +319,8 @@ export default function Home() {
                   href="/live-tv"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
-                  <Play className="w-5 h-5 fill-red-600" />
-                  Watch Live Now
+                  <Smartphone className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
+                  Download Our App
                 </Link>
                 <Link
                   href="/channels"

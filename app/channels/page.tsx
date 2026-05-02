@@ -1,21 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Search, Play, Radio, Users } from 'lucide-react';
-import { channels, categories } from '@/lib/channels-data';
+import { Category, Channel } from '@/lib/interface';
+import channelsData from '@/lib/channels-data';
 
 export default function ChannelsPage() {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
-
+  const [channels, setChannels] = useState<Channel[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+   useEffect(() => {
+      fetchChannels();
+      fetchCategories();
+    }, []);
+    const fetchChannels = async () => {
+        try {
+            const data = await channelsData.fetchChannels();
+            setChannels(data);
+            console.log(data);
+        } catch (error) {
+          console.error('Failed to load channels:', error);
+        } finally {
+        //   setLoading(false);
+        }
+      };
+    const fetchCategories = async () => {
+        try {
+            const data = await channelsData.categories();
+            setCategories(data);
+            console.log(data);
+        } catch (error) {
+          console.error('Failed to load channels:', error);
+        } finally {
+        //   setLoading(false);
+        }
+      };
   const filtered = channels.filter((ch) => {
     const matchSearch = ch.name.toLowerCase().includes(search.toLowerCase()) || ch.category.toLowerCase().includes(search.toLowerCase());
     const matchCat = activeCategory === 'All' || ch.category === activeCategory;
     return matchSearch && matchCat;
   });
 
-  const liveCount = channels.filter((c) => c.isLive).length;
+  // const liveCount = channels.filter((c) => c.isLive).length;
 
   return (
     <div className="bg-slate-950 pt-16 min-h-screen">
@@ -24,7 +52,7 @@ export default function ChannelsPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-red-600/15 border border-red-500/30 rounded-full px-4 py-1.5 mb-5">
             <div className="live-dot w-2 h-2 bg-red-400 rounded-full" />
-            <span className="text-red-300 text-xs font-semibold uppercase tracking-wider">{liveCount} Channels Live Now</span>
+            {/* <span className="text-red-300 text-xs font-semibold uppercase tracking-wider">{liveCount} Channels Live Now</span> */}
           </div>
           <h1 className="text-5xl font-bold text-white mb-4">All Channels</h1>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
@@ -53,15 +81,15 @@ export default function ChannelsPage() {
         <div className="flex flex-wrap gap-2 mb-10">
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
+              key={cat.name}
+              onClick={() => setActiveCategory(cat.name)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-                activeCategory === cat
+                activeCategory === cat.name
                   ? 'bg-red-600 text-white shadow-lg shadow-red-600/30'
                   : 'bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-600 hover:text-slate-200'
               }`}
             >
-              {cat}
+              {cat.name}
             </button>
           ))}
         </div>
@@ -77,23 +105,22 @@ export default function ChannelsPage() {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {filtered.map((ch) => (
-              <Link key={ch.id} href="/live-tv">
+              <Link key={ch.id} href={`/live-tv?id=${ch.id}`}>
                 <div className="group bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col items-center gap-3 hover:border-slate-600 hover:bg-slate-800/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50 cursor-pointer">
                   <div className="relative">
                     <div
                       className="w-16 h-16 rounded-2xl flex items-center justify-center text-white text-xl font-black shadow-lg group-hover:scale-105 transition-transform duration-300"
                       style={{
-                        backgroundColor: ch.color,
-                        boxShadow: `0 8px 24px ${ch.color}40`,
+                        boxShadow: `0 8px 24px 40`,
                       }}
                     >
-                      {ch.name.slice(0, 2)}
+                      <img src={'https://www.codeminer.in/tvchanel/admin/upload/' +ch.logo} />
                     </div>
-                    {ch.isLive && (
+                    {/* {ch.isLive && (
                       <div className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 bg-red-600 rounded-full px-1.5 py-0.5">
                         <div className="live-dot w-1.5 h-1.5 bg-white rounded-full" />
                       </div>
-                    )}
+                    )} */}
                   </div>
 
                   <div className="text-center w-full">
@@ -102,24 +129,24 @@ export default function ChannelsPage() {
                   </div>
 
                   <div className="w-full flex items-center justify-between">
-                    <span className="text-slate-600 text-[10px] font-mono">CH {ch.number}</span>
-                    {ch.isLive ? (
+                    <span className="text-slate-600 text-[10px] font-mono">CH {ch.code}</span>
+                    {/* {ch.isLive ? (
                       <span className="flex items-center gap-1 text-red-400 text-[10px] font-bold uppercase">
                         <Radio className="w-2.5 h-2.5" />
                         Live
                       </span>
                     ) : (
                       <span className="text-slate-600 text-[10px]">Off Air</span>
-                    )}
+                    )} */}
                   </div>
 
-                  <div className="w-full hidden group-hover:flex flex-col gap-1.5 mt-0 border-t border-slate-700/50 pt-2">
+                  {/* <div className="w-full hidden group-hover:flex flex-col gap-1.5 mt-0 border-t border-slate-700/50 pt-2">
                     <div className="text-slate-400 text-[10px] truncate text-center">{ch.currentShow}</div>
                     <div className="flex items-center justify-center gap-1 text-slate-500 text-[10px]">
                       <Users className="w-2.5 h-2.5" />
                       {ch.viewers}
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="w-full hidden group-hover:flex">
                     <div className="w-full flex items-center justify-center gap-1.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white text-xs font-semibold py-1.5 rounded-lg transition-colors">
