@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
 
   // 👇 ADD THIS if NOT hosted at root
-  // basePath: "/tvchanel/web",
-  // assetPrefix: "/tvchanel/web/",
+  basePath: "",
+  assetPrefix: "",
 };
 
 export default nextConfig;
