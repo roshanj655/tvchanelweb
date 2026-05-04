@@ -6,6 +6,7 @@ import channelsData from '@/lib/channels-data';
 import { useEffect, useState } from 'react';
 import { Channel } from '@/lib/interface';
 import HLSPlayer from '@/components/ui/HLSPlayer';
+import { isNull } from 'util';
 
 const stats = [
   { label: 'Live Channels', value: '200+', icon: Tv },
@@ -45,16 +46,21 @@ const tickerItems = [
   'WEATHER: Severe storm warning issued for coastal regions',
   'ENTERTAINMENT: Award season kicks off with stellar lineup',
 ];
-
+var featuredChannels:Channel[]=[];
 export default function Home() {
    const [channels, setChannels] = useState<Channel[]>([]);
+   const [selectedChannels, setSelectedChannels] = useState<Channel>();
+   let featu
    useEffect(() => {
          fetchChannels();
+         
        }, []);
        const fetchChannels = async () => {
            try {
                const data = await channelsData.fetchChannels();
                setChannels(data);
+               featuredChannels = data.slice(0, 6);
+               getSelectedChannel(3);
                stats[0].value = `${data.length}+`;
                console.log(data);
            } catch (error) {
@@ -63,7 +69,11 @@ export default function Home() {
            //   setLoading(false);
            }
          };
-  const featuredChannels = channels.slice(0, 6);
+  
+  const getSelectedChannel=(id=3)=>{
+    if(featuredChannels.length)
+      setSelectedChannels(featuredChannels[id]||{});
+  }
   return (
     <div className="bg-slate-950">
       {/* News Ticker */}
@@ -153,12 +163,13 @@ export default function Home() {
                     className="w-full h-full object-cover opacity-70"
                   /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-                  <HLSPlayer src={featuredChannels[3]?.link} />
+                  <HLSPlayer src={selectedChannels?.link||""} />
                 </div>
 
                 <div className="p-4 grid grid-cols-4 gap-2">
-                  {featuredChannels.slice(0, 4).map((ch) => (
+                  {featuredChannels.slice(0, 4).map((ch,index) => (
                     <div
+                      onClick={getSelectedChannel.bind(null, index)}
                       key={ch.id}
                       className="rounded-lg p-2.5 flex flex-col items-center gap-1 cursor-pointer hover:bg-slate-700/50 transition-colors"
                       style={{ backgroundColor: `#00000015` }}
@@ -316,11 +327,11 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
-                  href="/live-tv"
+                  href="https://codeminer.in/tvchanel/apk/app-release-tv.apk"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
                   <Smartphone className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
-                  Download Our App
+                  Download Our TV App
                 </Link>
                 <Link
                   href="/channels"
