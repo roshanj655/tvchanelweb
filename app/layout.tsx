@@ -8,7 +8,7 @@ import { Suspense } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'StreamTV - Live Broadcasting',
+  title: 'OMDiamond24 - Live Broadcasting',
   description: 'Your premier destination for live TV, news, sports, and entertainment. Stream 24/7 from anywhere in the world.',
 };
 

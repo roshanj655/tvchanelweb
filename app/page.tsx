@@ -163,7 +163,7 @@ export default function Home() {
                     className="w-full h-full object-cover opacity-70"
                   /> */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-                  <HLSPlayer src={selectedChannels?.link||""} />
+                  <HLSPlayer src={selectedChannels?.link?`https://codeminer.in/tvchanel/api/stream.php?url=${encodeURIComponent(selectedChannels?.link)}`:""} />
                 </div>
 
                 <div className="p-4 grid grid-cols-4 gap-2">
@@ -333,11 +333,11 @@ export default function Home() {
                   <Smartphone className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
                   Download Our TV App
                 </Link>
-                <Link
-                  href="/channels"
-                  className="flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/30 transition-colors border border-white/30"
+               <Link
+                  href="https://codeminer.in/tvchanel/apk/app-release-mobile.apk"
+                  className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
-                  Browse Channels
+                  Download Mobile App
                 </Link>
               </div>
             </div>
