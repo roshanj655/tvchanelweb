@@ -339,6 +339,12 @@ export default function Home() {
                 >
                   Download Mobile App
                 </Link>
+               <Link
+                  href="https://codeminer.in/tvchanel/desktop/OMDiamond24 1.0.0.exe"
+                  className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
+                >
+                  Download Desktop App
+                </Link>
               </div>
             </div>
           </div>
