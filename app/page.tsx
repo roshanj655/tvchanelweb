@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Radio, Play, TrendingUp, Users, Tv, Award, ChevronRight, Signal, Globe, Shield, Phone, Smartphone } from 'lucide-react';
+import { Radio, Play, TrendingUp, Users, Tv, Award, ChevronRight, Signal, Globe, Shield, Phone, Smartphone, Laptop } from 'lucide-react';
 import channelsData from '@/lib/channels-data';
 import { useEffect, useState } from 'react';
 import { Channel } from '@/lib/interface';
@@ -330,19 +330,21 @@ export default function Home() {
                   href="https://codeminer.in/tvchanel/apk/app-release-tv.apk"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
-                  <Smartphone className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
+                  <Tv className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
                   Download Our TV App
                 </Link>
                <Link
                   href="https://codeminer.in/tvchanel/apk/app-release-mobile.apk"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
+                  <Smartphone className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
                   Download Mobile App
                 </Link>
                <Link
                   href="https://codeminer.in/tvchanel/desktop/OMDiamond24 1.0.0.exe"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
+                  <Laptop className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
                   Download Desktop App
                 </Link>
               </div>
