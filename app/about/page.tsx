@@ -144,7 +144,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-900/50">
+      {/* <section className="py-20 bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="text-red-400 text-sm font-semibold uppercase tracking-wider">The People Behind StreamTV</span>
@@ -186,7 +186,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
