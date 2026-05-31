@@ -8,8 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center">
-                <Tv className="w-5 h-5 text-white" />
+              <div className="flex items-center justify-center">
+                {/* <Tv className="w-5 h-5 text-white" /> */}
+                <img src="https://www.codeminer.in/tvchanel/admin/upload/logo_69bba8cdb77ef7.10280942.jpg" className="w-10 h-10 text-white" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-white font-bold text-lg">OM Diamond 24</span>

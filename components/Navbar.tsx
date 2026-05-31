@@ -34,9 +34,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="relative">
-              <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-500 transition-colors">
-                <Tv className="w-5 h-5 text-white" />
-                {/* <img src="https://www.codeminer.in/tvchanel/admin/upload/logo_687c8dd0799be0.74222103.png" className="w-5 h-5 text-white" /> */}
+              <div className="flex items-center justify-center">
+                {/* <Tv className="w-5 h-5 text-white" /> */}
+                <img src="https://www.codeminer.in/tvchanel/admin/upload/logo_69bba8cdb77ef7.10280942.jpg" className="w-10 h-10 text-white" />
               </div>
               <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-red-400 rounded-full animate-pulse" />
             </div>
