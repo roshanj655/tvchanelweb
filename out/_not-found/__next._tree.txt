@@ -1,3 +1,3 @@
-:HL["/_next/static/chunks/16p27i0lmdqd-.css","style"]
+:HL["/_next/static/chunks/0n_fx_fy34g44.css","style"]
 :HL["https://www.codeminer.in/tvchanel/admin/upload/logo_69bba8cdb77ef7.10280942.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"a9LOlWq9bmseTwc61hxES"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"NE-6i4zkvJeuc1TiPBu-Y"}

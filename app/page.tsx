@@ -327,21 +327,21 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
-                  href="https://codeminer.in/tvchanel/apk/app-release-tv.apk"
+                  href="https://pub-22a23082e2a244939d75c9747bc537a5.r2.dev/tv/app-release-tv.apk"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
                   <Tv className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
                   Download Our TV App
                 </Link>
                <Link
-                  href="https://codeminer.in/tvchanel/apk/app-release-mobile.apk"
+                  href="https://pub-22a23082e2a244939d75c9747bc537a5.r2.dev/mobile/app-release-mobile.apk"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
                   <Smartphone className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
                   Download Mobile App
                 </Link>
                <Link
-                  href="https://codeminer.in/tvchanel/desktop/OMDiamond24 1.0.0.exe"
+                  href="https://pub-22a23082e2a244939d75c9747bc537a5.r2.dev/desktop/OMDiamond24%201.0.0.exe"
                   className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
                 >
                   <Laptop className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
