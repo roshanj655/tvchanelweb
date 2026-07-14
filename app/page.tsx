@@ -347,6 +347,13 @@ export default function Home() {
                   <Laptop className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
                   Download Desktop App
                 </Link>
+                <Link
+                  href="https://pub-22a23082e2a244939d75c9747bc537a5.r2.dev/firetv/app-release.apk"
+                  className="flex items-center gap-2 bg-white text-red-600 font-bold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-xl"
+                >
+                  <Laptop className="w-5 h-5 fill-red-600" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"/>
+                  Fire TV App
+                </Link>
               </div>
             </div>
           </div>
