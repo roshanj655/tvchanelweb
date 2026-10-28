@@ -116,7 +116,7 @@ export default function Home() {
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-6">
-                Watch TV
+                Watch
                 <br />
                 <span className="text-gradient">Live, Anytime,</span>
                 <br />
